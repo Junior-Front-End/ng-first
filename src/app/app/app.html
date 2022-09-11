@@ -1,0 +1,43 @@
+<main class="page bg-white" id="petratings">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 bg-white">
+  
+          <div class="container">
+            <h2 class="py-5">{{ title }}</h2>
+          </div>
+
+          <!-- ---------------------------- -->
+          <!-- Add Component -->     
+          <!-- ---------------------------- -->
+          <app-add (sub_add)="app_add($event)" ></app-add>
+          
+          <!-- ---------------------------- -->
+          <!-- Search Component -->
+          <!-- ---------------------------- -->
+          <app-search 
+            (sub_search)="app_search($event)" 
+            (sub_sort)="app_sort($event)" 
+            [sort]="sort"
+            [asc]="asc"
+          ></app-search>
+
+          <!-- ---------------------------- -->          
+          <!-- List Component -->
+          <!-- ---------------------------- -->
+          
+          <!-- path data 2/4 -->
+          <app-list [sub_list]="app_displayList" 
+          (sub_del)="app_del($event)" 
+          (sub_edit)="app_edit($event)"
+          ></app-list>
+
+
+          
+          
+ 
+ 
+        </div><!-- col-md-12 -->
+      </div><!-- row -->
+    </div><!-- container -->
+  </main><!-- main -->

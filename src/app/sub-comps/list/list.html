@@ -1,0 +1,70 @@
+<!-- ------------------------------------------- -->
+<!--                 List Component              -->
+<!-- ------------------------------------------- -->
+
+<!-- appointment-list -->
+<div class="appointment-list item-list mb-3">
+    
+    <!-- one pet -->
+
+    <!-- path data 4/4 -->
+    <div class="pet-item col media py-3" 
+    *ngFor="let item of sub_list">
+      
+      <!-- btn-left -->
+      <div class="mr-3">
+        
+        <button 
+        class="pet-delete btn btn-sm btn-danger" 
+        (click)="del_method(item)"
+        >
+
+          <!-- fontawesome 2/2 -->
+          <fa-icon [icon]="faTimes" ></fa-icon>
+
+        </button>
+
+      </div>
+      <!-- /btn-left -->
+  
+      <!-- pet-info -->
+      <div class="pet-info media-body">
+
+        <div class="pet-head d-flex">
+          <!-- pipes angular -->
+          <span class="pet-name" contenteditable="true" #pet
+          (blur)="blur_method({'id': item.id, 'field': 'petName', 'value': pet.innerText})"
+          
+          >
+            {{item.petName | uppercase}}
+          </span>
+          <span class="apt-date ml-auto">{{item.aptDate | date: 'M/d h:mm a'}}</span>
+        </div>
+  
+        <div class="owner-name">
+          <span class="label-item">Owner: </span>
+          <span contenteditable="true" #owner
+          (blur)="blur_method({'id': item.id, 'field': 'ownerName', 'value': owner.innerText})"
+          >
+
+            {{item.ownerName}}
+          </span>
+        </div>
+        
+        <div class="apt-notes" contenteditable="true" #note
+        (blur)="blur_method({'id': item.id, 'field': 'aptNotes', 'value': note.innerText})"
+        >
+        
+
+        {{item.aptNotes}}
+      </div>
+      
+      </div>
+      <!-- /pet-info -->
+
+    </div>
+    
+    <!-- /one pet -->
+
+  </div>
+  <!-- /appointment-list -->
